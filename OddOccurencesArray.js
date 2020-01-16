@@ -11,7 +11,6 @@ function solution(A) {
 
       // Return elements with odd occurences
       unpairedElements = getOddElementsCount(occurences);
-      console.log(unpairedElements);
 
       return parseInt(unpairedElements[0]);
     }
