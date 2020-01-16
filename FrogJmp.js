@@ -7,15 +7,21 @@ function solution(X, Y, D) {
     ) {
       let totalDistance = 0;
       let jumpCount = 0;
-      while (totalDistance <= Y) {
-        jumpCount += 1;
+
+      while (totalDistance < Y) {
         if (totalDistance == 0) {
           totalDistance += X + D;
+          jumpCount += 1;
         } else {
           totalDistance += D;
+          jumpCount += 1;
         }
       }
-      return jumpCount;
+      if (jumpCount == 1) {
+        return 0;
+      } else {
+        return jumpCount;
+      }
     }
   }
 }
@@ -28,8 +34,10 @@ function isWithinRange(minRange, maxRange, minValue, maxValue) {
   return minValue >= minRange && maxValue <= maxRange;
 }
 
-const X = 10;
-const Y = 85;
-const D = 30;
+const X = 3;
+const Y = 999111321;
+const D = 7;
 
 console.log(solution(X, Y, D));
+
+function solutionR(X, Y, D) {}
