@@ -12,7 +12,7 @@ function solution(A) {
       // Return elements with odd occurences
       unpairedElements = getOddElementsCount(occurences);
       console.log(unpairedElements);
-      
+
       return parseInt(unpairedElements[0]);
     }
     return "Invalid arguments";
@@ -47,13 +47,16 @@ function getOddElementsCount(obj) {
 }
 
 function getMaxValueFromArray(A) {
-  return Math.max.apply(null, A);
+  //   return Math.max.apply(null, A); // Not efficient
+  return A.reduce((max, v) => (max >= v ? max : v), -Infinity);
 }
 
 function getMinValueFromArray(A) {
-  return Math.min.apply(null, A);
+  //   return Math.min.apply(null, A); Not efficient
+  return A.reduce((min, v) => (min <= v ? min : v), Infinity);
 }
 
 const A = [9, 3, 9, 3, 9, 7, 8];
 
 console.log(solution(A));
+
