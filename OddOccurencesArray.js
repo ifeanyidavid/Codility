@@ -2,10 +2,12 @@ function solution(A) {
   let occurences, unpairedElements;
   const N = A.length;
   // Check if array length is odd
-  if (isOdd(N) && N >= 1 && N <= 1000000) {
+  if (isOdd(N) && isWithinRange(1, 1000000, N, N)) {
     const minValue = getMinValueFromArray(A);
     const maxValue = getMaxValueFromArray(A);
-    if (minValue >= 1 && maxValue <= 1000000000) {
+    const minRange = 1;
+    const maxRange = 1000000000;
+    if (isWithinRange(minRange, maxRange, minValue, maxValue)) {
       // Count the number of occurences of each element
       occurences = getElementsOccurences(A);
 
@@ -55,7 +57,10 @@ function getMinValueFromArray(A) {
   return A.reduce((min, v) => (min <= v ? min : v), Infinity);
 }
 
+function isWithinRange(minRange, maxRange, minValue, maxValue) {
+  return minValue >= minRange && maxValue <= maxRange;
+}
+
 const A = [9, 3, 9, 3, 9, 7, 8];
 
 console.log(solution(A));
-
