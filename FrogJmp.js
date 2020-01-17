@@ -1,3 +1,4 @@
+/* Slow solution O(X-Y) */
 function solution(X, Y, D) {
   if (isInteger(X) && isInteger(Y) && isInteger(D)) {
     if (
@@ -34,10 +35,15 @@ function isWithinRange(minRange, maxRange, minValue, maxValue) {
   return minValue >= minRange && maxValue <= maxRange;
 }
 
-const X = 3;
-const Y = 999111321;
-const D = 7;
+/* Fast solution O(1) */
+
+function solution(X, Y, D) {
+  // write your code in JavaScript (Node.js 6.4.0)
+  return Math.ceil((Y - X) / D);
+}
+
+const X = 10;
+const Y = 85;
+const D = 30;
 
 console.log(solution(X, Y, D));
-
-function solutionR(X, Y, D) {}
