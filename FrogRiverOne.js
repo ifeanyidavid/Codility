@@ -20,7 +20,7 @@ function solution(X, A) {
       isWithinRange(minRange, maxRange, X, X)
     ) {
       if (getMaxValueFromArray(A) === X) {
-        if (A.indexOf(X)) {
+        if (A.indexOf(X) !== -1) {
           return A.indexOf(X);
         } else {
           return -1;
@@ -32,7 +32,7 @@ function solution(X, A) {
   }
 }
 
-const A = [1, 3, 1, 4, 2, 3, 5, 4];
-const X = 5;
+const A = [1];
+const X = 1;
 
 console.log(solution(X, A));
