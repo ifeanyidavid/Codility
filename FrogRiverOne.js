@@ -14,14 +14,22 @@ function getMinValueFromArray(A) {
   return A.reduce((min, v) => (min <= v ? min : v), Infinity);
 }
 
-function countElements(A) {
-  const count = new Array(A.length + 1).fill(0);
-  for (let i = 0; i < A.length; i++) {
-    count[A[i]] += 1;
-  }
-  console.log(count);
+function sort(A) {
+  return Array.from(new Set(A.sort()));
+}
 
-  return count;
+function findMissingElements(A) {
+  return sort(A).reduce(function(acc, cur, ind, arr) {
+    var diff = cur - arr[ind - 1];
+    if (diff > 1) {
+      var i = 1;
+      while (i < diff) {
+        acc.push(arr[ind - 1] + i);
+        i++;
+      }
+    }
+    return acc;
+  }, []);
 }
 
 function solution(X, A) {
@@ -40,10 +48,19 @@ function solution(X, A) {
         ) {
           return -1;
         }
-        if (A.indexOf(X) !== -1) {
-          return A.indexOf(X);
-        } else {
+        const A_Copy = [...A];
+        const missingElements = findMissingElements(A_Copy);
+        if (missingElements.length > 0) {
           return -1;
+        } else {
+          if (A.indexOf(X) !== -1) {
+            console.log(A.indexOf(X));
+            console.log(A);
+
+            return A.indexOf(X);
+          } else {
+            return -1;
+          }
         }
       } else {
         return -1;
@@ -52,7 +69,7 @@ function solution(X, A) {
   }
 }
 
-const A = [1, 2, 3, 5, 3, 1];
+const A = [1, 3, 1, 4, 2, 3, 5, 4];
 const X = 5;
 
 console.log(solution(X, A));
