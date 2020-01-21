@@ -32,7 +32,7 @@ function findMissingElements(A) {
   }, []);
 }
 
-function solution(X, A) {
+/* function solution(X, A) {
   if (isInteger(X) && Array.isArray(A)) {
     const minRange = 1;
     const maxRange = 100000;
@@ -67,9 +67,36 @@ function solution(X, A) {
       }
     }
   }
+} */
+
+function solution(X, A) {
+  let times = {};
+
+  for (var second = 0; second < A.length; second++) {
+    var position = A[second];
+    if (position > X) continue;
+    if (times[position] === undefined || times[position] > second) {
+      times[position] = second;
+    }
+  }
+
+//   console.log(times);
+
+  let maxTime = 0;
+  for (var i = 1; i < X + 1; i++) {
+    console.log(times);
+
+    if (times[i] === undefined) {
+      return -1;
+    } else if (maxTime < times[i]) {
+      maxTime = times[i];
+    }
+  }
+
+  return maxTime;
 }
 
-const A = [1, 3, 1, 4, 2, 3, 5, 4];
-const X = 5;
+const A = [2, 2, 2, 2];
+const X = 2;
 
 console.log(solution(X, A));
